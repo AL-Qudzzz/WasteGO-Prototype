@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WasteGO</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .mobile-container {
+            background-color: #fff;
+            width: 375px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #eee;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2em;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            padding: 15px;
+            gap: 10px;
+        }
+
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 15px 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            background-color: #e0e0e0;
+        }
+
+        .menu-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-bottom: 8px;
+        }
+
+        .menu-text {
+            font-size: 0.9em;
+            color: #333;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            padding: 15px;
+        }
+
+        .action-button {
+            flex: 1;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            text-align: center;
+        }
+
+        .action-button.orange {
+            background-color: #ff9500;
+            color: #fff;
+        }
+
+        .action-button.green {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .action-button.grey {
+            background-color: #ddd;
+            color: #666;
+        }
+
+        .action-button:hover {
+            opacity: 0.9;
+        }
+
+        .list-menu {
+            padding: 15px;
+        }
+
+        .list-item {
+            background-color: #fff;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+        }
+
+        .list-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .list-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .list-icon.red { background-color: #ff4444; }
+        .list-icon.orange { background-color: #ff9500; }
+        .list-icon.yellow { background-color: #ffcc00; }
+        .list-icon.green { background-color: #28a745; }
+
+        .list-text {
+            flex-grow: 1;
+        }
+
+        .arrow {
+            color: #888;
+        }
+
+        .bottom-navigation {
+            background-color: #eee;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            border-top: 1px solid #ddd;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #555;
+            text-decoration: none;
+            font-size: 0.8em;
+            cursor: pointer;
+        }
+
+        .nav-item img {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-container">
+        <div class="header">WasteGO</div>
+
+        <div class="menu-grid">
+            <div class="menu-item" onclick="showAlert('Household Waste')">
+                <img src="House.jpg" alt="Household Waste Icon">
+                <div class="menu-text">Household</div>
+            </div>
+            <div class="menu-item" onclick="showAlert('Factory Waste')">
+                <img src="FactoryWaste.jpg" alt="Factory Waste Icon">
+                <div class="menu-text">Factory Waste</div>
+            </div>
+            <div class="menu-item" onclick="showAlert('Food Waste')">
+                <img src="FoodWaste.jpg" alt="Food Waste Icon">
+                <div class="menu-text">Food Waste</div>
+            </div>
+            <div class="menu-item" onclick="showAlert('Organic Waste')">
+                <img src="Medic.jpg" alt="Organic Waste Icon">
+                <div class="menu-text">Medic Waste</div>
+            </div>
+            <div class="menu-item" onclick="showAlert('Recyclable Waste')">
+                <img src="recycle.jpg" alt="Recyclable Waste Icon">
+                <div class="menu-text">Recyclable</div>
+            </div>
+            <div class="menu-item" onclick="showAlert('Compostable Waste')">
+                <img src="electronic.jpg" alt="Compostable Waste Icon">
+                <div class="menu-text">Electronic</div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="action-button orange" onclick="showAlert('Schedule Pickup')">Deposit Waste</button>
+            <button class="action-button green" onclick="showAlert('open Poin')">Poin User</button>
+        </div>
+
+        <div class="action-buttons">
+            <button class="action-button grey">View History</button>
+            <button class="action-button grey">Reports</button>
+        </div>
+
+        <div class="list-menu">
+            <div class="list-item" onclick="showAlert('Scheduling')">
+                <div class="list-icon red"></div>
+                <div class="list-text">Scheduling</div>
+                <div class="arrow">></div>
+            </div>
+            <div class="list-item" onclick="showAlert('Achievment')">
+                <div class="list-icon orange"></div>
+                <div class="list-text">Achievment</div>
+                <div class="arrow">></div>
+            </div>
+            <div class="list-item" onclick="showAlert('Drop-off Points')">
+                <div class="list-icon yellow"></div>
+                <div class="list-text">Drop-off Points</div>
+                <div class="arrow">></div>
+            </div>
+            <div class="list-item" onclick="showAlert('Drop-off Points')">
+                <div class="list-icon green"></div>
+                <div class="list-text">Wallets</div>
+                <div class="arrow">></div>
+            </div>
+        </div>
+
+        <div class="bottom-navigation">
+            <a href="#" class="nav-item" onclick="showAlert('Home')">
+                <img src="home.png" alt="Home Icon">
+                <div>Home</div>
+            </a>
+            <a href="#" class="nav-item" onclick="showAlert('Locate')">
+                <img src="location.png" alt="Loacte Icon">
+                <div>Locate</div>
+            </a>
+            </a>
+            <a href="#" class="nav-item" onclick="showAlert('Profile')">
+                <img src="user.png" alt="Profile Icon">
+                <div>Profile</div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function showAlert(menuName) {
+            alert(`You clicked on: ${menuName}`);
+        }
+    </script>
+</body>
+</html>
